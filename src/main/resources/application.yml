@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Todo-App
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Mu18052007
+    url: jdbc:mysql://localhost:3306/newtodo_schema
+logging:
+  level:
+    web: debug
