@@ -20,8 +20,8 @@ body {
 }
 
 .left-container {
-    flex: 1;
-    margin-right: 20px; /* Added margin to create space between containers */
+    flex: 2;
+    margin-right: 50px; /* Added margin to create space between containers */
 }
 
 .right-container {
@@ -40,10 +40,12 @@ body {
     background-color: #3498db;
     padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
 .action-button {
+    margin-right: 10px;
+    margin-left: 10px;
     background-color: #fff;
     color: #3498db;
     border: none;
