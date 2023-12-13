@@ -6,6 +6,10 @@ spring:
     username: root
     password: Mu18052007
     url: jdbc:mysql://localhost:3306/newtodo_schema
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 logging:
   level:
     web: debug
