@@ -11,6 +11,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(
                 matcherRegistry -> matcherRegistry.requestMatchers("/", "/**", "/login", "/register").permitAll()
-        ).build();
+        ).formLogin(formLoginConfigurer -> formLoginConfigurer.loginPage("/login").defaultSuccessUrl("/todo")).build();
     }
 }
