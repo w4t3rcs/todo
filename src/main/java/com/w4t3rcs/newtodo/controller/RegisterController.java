@@ -38,7 +38,6 @@ public class RegisterController {
 
     @PostMapping
     public String postRegistration(@ModelAttribute("user") @Valid UserDTO userDTO, BindingResult bindingResult) {
-        System.out.println(userDTO);
         if (bindingResult.hasErrors()) return "main/register";
 
         User user = userDTO.toUser(passwordEncoder);

@@ -41,7 +41,7 @@ public class User implements Persistable<String>, UserDetails {
 
     @Override
     public boolean isNew() {
-        return getId() == null;
+        return id == null;
     }
 
     @Override

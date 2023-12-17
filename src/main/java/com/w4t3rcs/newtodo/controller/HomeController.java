@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
     @GetMapping
     public String getHomePage() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        boolean authenticated = authentication.isAuthenticated();
+        Authentication user = SecurityContextHolder.getContext().getAuthentication();
+        boolean authenticated = user != null && user.isAuthenticated();
         return authenticated ? "authenticated/home" : "main/home";
     }
 }

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link rel="stylesheet" th:href="@{/styles/common/authentication.css}">
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure that you want to leave?</h2>
+        <p>Todo Home link: <a class="special-link" th:href="@{/}">Home</a></p>
+        <form th:method="POST" th:action="@{/exit}" id="form">
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>

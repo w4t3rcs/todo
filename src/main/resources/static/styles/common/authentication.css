@@ -15,7 +15,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-.login-container {
+.container {
     background-color: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -64,13 +64,13 @@ input[type="submit"]:hover {
     opacity: 0.8;
 }
 
-.registration-link {
+.special-link {
     color: #e74c3c;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
-.registration-link:hover {
+.special-link:hover {
     color: #a2372d;
 }

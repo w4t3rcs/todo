@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo</title>
-    <link rel="stylesheet" th:href="@{/styles/main/login.css}">
-    <script th:src="@{/scripts/main/login.js}"></script>
+    <link rel="stylesheet" th:href="@{/styles/common/authentication.css}">
 </head>
 <body>
-    <div class="login-container">
+    <div class="container">
         <p class="registration-offer">
-            Not registered yet? <a class="registration-link" th:href="@{/register}">Join us now!</a>
+            Not registered yet? <a class="special-link" th:href="@{/register}">Join us now!</a>
         </p>
         <div th:if="${error}">Unable to login. Check your username and password.</div>
         <h2>Sign In here!</h2>
-        <form th:method="POST" th:action="@{/login}" id="loginForm">
+        <form th:method="POST" th:action="@{/login}" id="form">
             <label for="username">Username: </label>
             <input type="text" name="username" id="username" autocomplete="username">
             <br>

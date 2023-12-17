@@ -28,7 +28,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(matcherRegistry ->
                         matcherRegistry.requestMatchers("/", "/**", "/login", "/register").permitAll()
+                                .requestMatchers("/todo", "/todo/**", "/exit", "/account", "/account/**").hasRole("USER")
                 ).formLogin(formLoginConfigurer -> formLoginConfigurer.loginPage("/login").defaultSuccessUrl("/"))
+                .logout(logoutConfigurer -> logoutConfigurer.clearAuthentication(true).logoutUrl("/exit")
+                        .invalidateHttpSession(true).logoutSuccessUrl("/"))
                 .build();
     }
 }

@@ -12,4 +12,4 @@ spring:
         enabled: true
 logging:
   level:
-    web: debug
+    web: info
