@@ -10,23 +10,18 @@
     <div class="container">
         <div class="left-container">
             <div class="button-panel">
+                <button class="action-button" th:onclick="navigateTo('create')">Create Todo</button>
                 <button class="action-button" th:onclick="navigateTo('account')">Account</button>
-                <button class="action-button" th:onclick="navigateTo('home')">Home</button>
+                <button class="action-button" th:onclick="navigateTo('/')">Home</button>
                 <button class="action-button" th:onclick="navigateTo('exit')">Exit</button>
             </div>
-
-
         </div>
 
         <div class="right-container">
-            <h2>Why Todo App?</h2>
-            <p>Our Todo App is designed to make task management a breeze. Here's why you should choose us:</p>
-            <ul>
-                <li>🌟 User-friendly interface for a seamless experience</li>
-                <li>🔒 Secure and private task management</li>
-                <li>📱 Access your tasks from anywhere, anytime</li>
-                <li>💡 Innovative features to enhance your productivity</li>
-            </ul>
+            <div th:each="todo : ${todos}">
+                <h4 th:text="${todo.name}"></h4>
+                <a th:href="@{/todo/{id}(id=${todo.id})}"></a>
+            </div>
         </div>
     </div>
 </body>
