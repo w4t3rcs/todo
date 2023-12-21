@@ -10,17 +10,19 @@
     <div class="container">
         <div class="left-container">
             <div class="button-panel">
-                <button class="action-button" th:onclick="navigateTo('create')">Create Todo</button>
-                <button class="action-button" th:onclick="navigateTo('account')">Account</button>
+                <button class="action-button" th:onclick="navigateTo('/todo-create')">Create Todo</button>
+                <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
                 <button class="action-button" th:onclick="navigateTo('/')">Home</button>
-                <button class="action-button" th:onclick="navigateTo('exit')">Exit</button>
+                <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
             </div>
         </div>
 
-        <div class="right-container">
+        <div class="right-container" style="padding: 100px;">
             <div th:each="todo : ${todos}">
-                <h4 th:text="${todo.name}"></h4>
-                <a th:href="@{/todo/{id}(id=${todo.id})}"></a>
+                <a th:href="@{/todo/{id}(id=${todo.id})}" th:text="${todo.name}"></a>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
     </div>

@@ -3,12 +3,10 @@ package com.w4t3rcs.newtodo.model.entity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.domain.Persistable;
 
+@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,6 +26,6 @@ public class Task implements Persistable<Long> {
 
     @Override
     public boolean isNew() {
-        return id == 0L;
+        return id == null;
     }
 }

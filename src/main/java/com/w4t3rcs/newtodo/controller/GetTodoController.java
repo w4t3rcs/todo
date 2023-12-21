@@ -2,9 +2,13 @@ package com.w4t3rcs.newtodo.controller;
 
 import com.w4t3rcs.newtodo.model.data.dao.TaskRepository;
 import com.w4t3rcs.newtodo.model.data.dao.TodoRepository;
+import com.w4t3rcs.newtodo.model.data.dao.UserRepository;
 import com.w4t3rcs.newtodo.model.entity.Task;
 import com.w4t3rcs.newtodo.model.entity.Todo;
+import com.w4t3rcs.newtodo.model.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,19 +17,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/todo")
 @Controller
-public class TodoHomeController {
+public class GetTodoController {
+    private final UserRepository userRepository;
     private final TodoRepository todoRepository;
     private final TaskRepository taskRepository;
 
     @Autowired
-    public TodoHomeController(TodoRepository todoRepository, TaskRepository taskRepository) {
+    public GetTodoController(UserRepository userRepository, TodoRepository todoRepository, TaskRepository taskRepository) {
+        this.userRepository = userRepository;
         this.todoRepository = todoRepository;
         this.taskRepository = taskRepository;
     }
 
     @GetMapping
     public String getTodoHome(Model model) {
-        model.addAttribute("todos", todoRepository.findAll());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        User currentUser = userRepository.findByName(currentUsername).orElseThrow();
+        model.addAttribute("todos", todoRepository.findAllByUser(currentUser));
         return "authenticated/todo/home";
     }
 

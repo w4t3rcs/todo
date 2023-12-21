@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" th:href="@{/styles/common/home.css}">
+    <script th:src="@{/scripts/common/home.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="button-panel">
+            <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
+            <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
+            <button class="action-button" th:onclick="navigateTo('/')">Home</button>
+            <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
+        </div>
+
+        <div class="text-container">
+            <h2>New Task</h2>
+            <form th:action="@{/todo-create/task}" th:method="POST" th:object="${task}">
+                <label for="description"></label>
+                <br>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                <input style="height: 25px; width: 390px" type="text" th:field="*{description}" id="description" placeholder="Enter your description" autocomplete="description">
+                <br>
+                <br>
+                <input type="submit" class="action-button">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
