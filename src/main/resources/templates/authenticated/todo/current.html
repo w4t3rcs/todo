@@ -7,20 +7,24 @@
     <script th:src="@{/scripts/common/home.js}"></script>
 </head>
 <body>
-<div class="container">
-    <div class="button-panel">
-        <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
-        <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
-        <button class="action-button" th:onclick="navigateTo('/')">Home</button>
-        <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
-    </div>
+    <div class="container">
+        <div class="button-panel">
+            <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
+            <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
+            <button class="action-button" th:onclick="navigateTo('/')">Home</button>
+            <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
+        </div>
 
-    <div class="text-container">
-        <h2 th:text="${currentTodo.name}"></h2>
-        <div th:each="task : ${currentTasks}">
-            <p th:text="${task.description}"></p>
+        <div class="text-container">
+            <h2 th:text="${currentTodo.name}"></h2>
+            <div th:each="task : ${currentTasks}">
+                <span th:text="${task.description}"></span>
+                <br>
+                <span>Status: <span th:text="${task.finished ? 'Finished' : 'Not Finished'}"></span></span>
+                <br>
+                <br>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>
