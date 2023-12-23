@@ -36,7 +36,7 @@ public class GetTodoController {
 
     @GetMapping("/{id}")
     public String getCurrentTodo(@PathVariable Long id, Model model) {
-        Todo todo = todoRepository.findById(id).orElseThrow(RuntimeException::new);
+        Todo todo = todoRepository.findById(id).orElseThrow();
         model.addAttribute("currentTodo", todo);
         Iterable<Task> tasks = taskRepository.findAllByTodo(todo);
         model.addAttribute("currentTasks", tasks);
