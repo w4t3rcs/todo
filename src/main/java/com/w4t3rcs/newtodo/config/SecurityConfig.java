@@ -1,10 +1,10 @@
 package com.w4t3rcs.newtodo.config;
 
 import com.w4t3rcs.newtodo.model.data.dao.UserRepository;
+import com.w4t3rcs.newtodo.model.properties.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,10 +25,10 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, SecurityProperties securityProperties) throws Exception {
         return httpSecurity.authorizeHttpRequests(matcherRegistry ->
-                        matcherRegistry.requestMatchers("/", "/**", "/login", "/register").permitAll()
-                                .requestMatchers("/todo", "/todo/**", "/exit", "/account", "/account/**").hasRole("USER")
+                        matcherRegistry.requestMatchers(securityProperties.getPatternsForAll()).permitAll()
+                                .requestMatchers(securityProperties.getPatternsForUsers()).hasRole("USER")
                 ).formLogin(formLoginConfigurer -> formLoginConfigurer.loginPage("/login").defaultSuccessUrl("/"))
                 .logout(logoutConfigurer -> logoutConfigurer.clearAuthentication(true).logoutUrl("/exit")
                         .invalidateHttpSession(true).logoutSuccessUrl("/"))

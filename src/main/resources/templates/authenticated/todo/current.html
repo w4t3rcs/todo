@@ -24,6 +24,11 @@
                 <br>
                 <br>
             </div>
+
+            <button class="action-button" th:onclick="navigateTo('/todo-editor')">Editor</button>
+            <form th:method="DELETE" th:action="@{/todo/{id}(id=${currentTodo.id})}" th:object="${currentTodo}">
+                <button type="submit" class="action-button">Delete Todo</button>
+            </form>
         </div>
     </div>
 </body>

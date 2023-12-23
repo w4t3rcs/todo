@@ -12,7 +12,7 @@ public class HomeController {
     @GetMapping
     public String getHomePage() {
         Authentication user = SecurityContextHolder.getContext().getAuthentication();
-        boolean authenticated = user != null && user.isAuthenticated();
+        boolean authenticated = user != null && user.isAuthenticated() && (!user.getName().equals("anonymousUser") || user.getName() == null);
         return authenticated ? "authenticated/home" : "main/home";
     }
 }
