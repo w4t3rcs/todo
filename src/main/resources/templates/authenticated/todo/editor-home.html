@@ -10,8 +10,8 @@
     <div class="container">
         <div class="left-container">
             <div class="button-panel">
+                <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
                 <button class="action-button" th:onclick="navigateTo('/todo-create')">Create Todo</button>
-                <button class="action-button" th:onclick="navigateTo('/todo-editor')">Todo Editor</button>
                 <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
                 <button class="action-button" th:onclick="navigateTo('/')">Home</button>
                 <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
@@ -19,8 +19,9 @@
         </div>
 
         <div class="right-container" style="padding: 100px;">
+            <h1>Edit Your Todos!</h1>
             <div th:each="todo : ${todos}">
-                <a th:href="@{/todo/{id}(id=${todo.id})}" th:text="${todo.name}"></a>
+                <a th:href="@{/todo-editor/{id}(id=${todo.id})}" th:text="${todo.name}"></a>
                 <br>
                 <br>
                 <br>
