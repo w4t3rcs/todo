@@ -9,16 +9,28 @@ import lombok.Data;
 
 @Data
 public class TaskDTO {
+    private Long id;
+    private Todo todo;
     @Size(message = "Invalid description", max = 512)
     @NotEmpty(message = "Invalid description")
     private String description;
+    private boolean finished;
+
+    public static TaskDTO fromTask(Task task) {
+        TaskDTO taskDTO = new TaskDTO();
+        taskDTO.setId(task.getId());
+        taskDTO.setDescription(task.getDescription());
+        taskDTO.setFinished(task.isFinished());
+        taskDTO.setTodo(task.getTodo());
+        return taskDTO;
+    }
 
     public Task toTask(TodoRepository todoRepository) {
         Task task = new Task();
+        if (this.getId() != null) task.setId(this.getId());
         task.setDescription(this.getDescription());
-
-        Todo currentTodoFromDb = todoRepository.findAllOrderedDesc().get(0);
-        task.setTodo(currentTodoFromDb);
+        task.setFinished(this.isFinished());
+        task.setTodo(this.getTodo() == null ? todoRepository.findAllOrderedDesc().get(0) : this.getTodo());
         return task;
     }
 }

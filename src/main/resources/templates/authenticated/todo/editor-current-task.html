@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link rel="stylesheet" th:href="@{/styles/common/home.css}">
+    <script th:src="@{/scripts/common/home.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="button-panel">
+            <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
+            <button class="action-button" th:onclick="navigateTo('/todo-editor')">Todo Editor</button>
+            <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
+            <button class="action-button" th:onclick="navigateTo('/')">Home</button>
+            <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
+        </div>
+
+        <div class="text-container">
+            <form th:method="PUT" th:action="@{/todo-editor/task/{id}(id=${currentTask.id})}" th:object="${currentTask}">
+                <label for="description">Description:</label>
+                <br>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                <input style="height: 25px; width: 390px" type="text" th:field="*{description}" id="description" placeholder="Enter task description" autocomplete="todo-description">
+                <br>
+                <br>
+                <label for="finished">Is finished:</label>
+                <br>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('finished')}" th:errors="*{finished}"></span>
+                <input style="height: 25px; width: 25px" type="checkbox" th:field="*{finished}" id="finished">
+                <br>
+                <br>
+                <input class="action-button" type="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

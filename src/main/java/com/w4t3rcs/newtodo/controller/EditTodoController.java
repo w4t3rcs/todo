@@ -2,6 +2,8 @@ package com.w4t3rcs.newtodo.controller;
 
 import com.w4t3rcs.newtodo.model.data.dao.TaskRepository;
 import com.w4t3rcs.newtodo.model.data.dao.TodoRepository;
+import com.w4t3rcs.newtodo.model.data.dto.TaskDTO;
+import com.w4t3rcs.newtodo.model.data.dto.TodoDTO;
 import com.w4t3rcs.newtodo.model.entity.Task;
 import com.w4t3rcs.newtodo.model.entity.Todo;
 import com.w4t3rcs.newtodo.model.entity.User;
@@ -39,25 +41,32 @@ public class EditTodoController {
     public String getCurrentEditorPage(@PathVariable Long id, Model model) {
         User currentUser = currentUserGetter.get();
         Todo todo = todoRepository.findByUserAndId(currentUser, id).orElseThrow();
-        model.addAttribute("currentTodo", todo);
+        model.addAttribute("currentTodo", TodoDTO.fromTask(todo));
         Iterable<Task> tasks = taskRepository.findAllByTodo(todo);
         model.addAttribute("currentTasks", tasks);
         return "authenticated/todo/editor-current";
     }
 
     @PutMapping("/{id}")
-    public String postCurrentEditor(@PathVariable Long id, @ModelAttribute @Valid Todo todo, BindingResult bindingResult) {
+    public String postCurrentEditor(@PathVariable Long id, @ModelAttribute("currentTodo") @Valid TodoDTO todoDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "authenticated/todo/editor-current";
-        todo.setUser(currentUserGetter.get());
+        Todo todo = todoDTO.toTodo(currentUserGetter);
         todoRepository.save(todo);
         return "redirect:/todo/" + id;
     }
 
+    @GetMapping("/task/{id}")
+    public String getCurrentTaskEditorPage(@PathVariable Long id, Model model) {
+        Task currentTask = taskRepository.findById(id).orElseThrow();
+        model.addAttribute("currentTask", TaskDTO.fromTask(currentTask));
+        return "authenticated/todo/editor-current-task";
+    }
+
     @PutMapping("/task/{id}")
-    public String postCurrentTasksEditor(@PathVariable Long id, @ModelAttribute @Valid Todo todo, @ModelAttribute @Valid Task task, BindingResult bindingResult) {
+    public String postCurrentTaskEditor(@ModelAttribute("currentTask") @Valid TaskDTO taskDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "authenticated/todo/editor-current";
-//        task.setTodo(todo);
+        Task task = taskDTO.toTask(todoRepository);
         taskRepository.save(task);
-        return "redirect:/todo-editor/" + todo.getId();
+        return "redirect:/todo-editor/" + task.getTodo().getId();
     }
 }
