@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link rel="stylesheet" th:href="@{/styles/common/home.css}">
+    <script th:src="@{/scripts/common/home.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="button-panel">
+            <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
+            <button class="action-button" th:onclick="navigateTo('/todo-editor')">Todo Editor</button>
+            <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
+            <button class="action-button" th:onclick="navigateTo('/')">Home</button>
+            <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
+        </div>
+
+        <div class="text-container">
+            <form th:method="PUT" th:action="@{/todo-editor/{id}(id=${currentTodo.id})}" th:object="${currentTodo}">
+                <label for="name">Name:</label>
+                <br>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                <input style="height: 25px; width: 390px" type="text" th:field="*{name}" id="name" placeholder="Enter todo name" autocomplete="todo-name">
+                <div th:each="task : ${currentTasks}">
+                    <span th:text="${task.description}"></span>
+                    <br>
+                    <span>Status: <span th:text="${task.finished ? 'Finished' : 'Not Finished'}"></span></span>
+                    <br>
+                    <a th:href="@{/todo-editor/task/{id}(id=${task.id})}">Edit Task</a>
+                    <br>
+                    <br>
+                </div>
+
+                <input class="action-button" type="submit">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

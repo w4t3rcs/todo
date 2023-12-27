@@ -19,6 +19,7 @@
         </div>
 
         <div class="right-container" style="padding: 100px;">
+            <h1>Todo Home!</h1>
             <div th:each="todo : ${todos}">
                 <a th:href="@{/todo/{id}(id=${todo.id})}" th:text="${todo.name}"></a>
                 <br>
