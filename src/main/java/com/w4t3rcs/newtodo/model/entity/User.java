@@ -36,6 +36,7 @@ public class User implements Persistable<String>, UserDetails {
     private String email;
     @Past(message = "Invalid date")
     private LocalDate birthdate;
+    private String role;
 
     @Override
     public boolean isNew() {
@@ -44,7 +45,7 @@ public class User implements Persistable<String>, UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return List.of(new SimpleGrantedAuthority("ROLE_" + role.toUpperCase()));
     }
 
     @Override

@@ -28,7 +28,8 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, SecurityProperties securityProperties) throws Exception {
         return httpSecurity.authorizeHttpRequests(matcherRegistry ->
                         matcherRegistry.requestMatchers(securityProperties.getPatternsForAll()).permitAll()
-                                .requestMatchers(securityProperties.getPatternsForUsers()).hasRole("USER")
+                                .requestMatchers(securityProperties.getPatternsForUsers()).hasAnyRole("USER", "ADMIN")
+                                .requestMatchers(securityProperties.getPatternsForAdmins()).hasRole("ADMIN")
                 ).formLogin(formLoginConfigurer -> formLoginConfigurer.loginPage("/login").defaultSuccessUrl("/"))
                 .logout(logoutConfigurer -> logoutConfigurer.clearAuthentication(true).logoutUrl("/exit")
                         .invalidateHttpSession(true).logoutSuccessUrl("/"))

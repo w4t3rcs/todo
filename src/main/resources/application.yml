@@ -1,3 +1,9 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+      base-path: /api/application
 spring:
   application:
     name: Todo-App
@@ -10,10 +16,14 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+  jackson:
+    serialization:
+      indent-output: true
 logging:
   level:
     web: info
 todo:
   security:
-    patterns-for-all: /, /**, /login, /register
+    patterns-for-all: /, /login, /register, /styles/**, /scripts/**, /images/**
     patterns-for-users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**
+    patterns-for-admins: /api, /api/**

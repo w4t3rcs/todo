@@ -30,7 +30,7 @@ public class TaskDTO {
         if (this.getId() != null) task.setId(this.getId());
         task.setDescription(this.getDescription());
         task.setFinished(this.isFinished());
-        task.setTodo(this.getTodo() == null ? todoRepository.findAllOrderedDesc().get(0) : this.getTodo());
+        task.setTodo(this.getTodo() == null ? todoRepository.findTopByOrderByIdDesc().orElseThrow() : this.getTodo());
         return task;
     }
 }

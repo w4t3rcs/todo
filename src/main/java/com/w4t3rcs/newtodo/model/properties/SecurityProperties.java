@@ -10,4 +10,5 @@ import org.springframework.stereotype.Component;
 public class SecurityProperties {
     private String[] patternsForAll;
     private String[] patternsForUsers;
+    private String[] patternsForAdmins;
 }
