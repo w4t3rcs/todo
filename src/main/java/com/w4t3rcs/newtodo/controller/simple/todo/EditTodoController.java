@@ -65,7 +65,7 @@ public class EditTodoController {
     @PutMapping("/task/{id}")
     public String putCurrentTaskEditor(@ModelAttribute("currentTask") @Valid TaskDTO taskDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "authenticated/todo/editor-current";
-        Task task = taskDTO.toTask(todoRepository);
+        Task task = taskDTO.toTask(todoRepository, taskRepository);
         taskRepository.save(task);
         return "redirect:/todo-editor/" + task.getTodo().getId();
     }

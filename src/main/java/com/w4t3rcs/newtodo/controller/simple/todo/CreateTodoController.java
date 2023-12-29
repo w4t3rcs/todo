@@ -58,7 +58,7 @@ public class CreateTodoController {
         Todo todo = todoDTO.toTodo(currentUserGetter);
         todoRepository.save(todo);
         tasks.forEach(taskDTO -> {
-            Task task = taskDTO.toTask(todoRepository);
+            Task task = taskDTO.toTask(todoRepository, taskRepository);
             taskRepository.save(task);
         });
 
