@@ -1,4 +1,4 @@
-package com.w4t3rcs.newtodo.controller;
+package com.w4t3rcs.newtodo.controller.simple;
 
 import com.w4t3rcs.newtodo.model.data.dao.TaskRepository;
 import com.w4t3rcs.newtodo.model.data.dao.TodoRepository;
@@ -48,7 +48,7 @@ public class EditTodoController {
     }
 
     @PutMapping("/{id}")
-    public String postCurrentEditor(@PathVariable Long id, @ModelAttribute("currentTodo") @Valid TodoDTO todoDTO, BindingResult bindingResult) {
+    public String putCurrentEditor(@PathVariable Long id, @ModelAttribute("currentTodo") @Valid TodoDTO todoDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "authenticated/todo/editor-current";
         Todo todo = todoDTO.toTodo(currentUserGetter);
         todoRepository.save(todo);
@@ -63,7 +63,7 @@ public class EditTodoController {
     }
 
     @PutMapping("/task/{id}")
-    public String postCurrentTaskEditor(@ModelAttribute("currentTask") @Valid TaskDTO taskDTO, BindingResult bindingResult) {
+    public String putCurrentTaskEditor(@ModelAttribute("currentTask") @Valid TaskDTO taskDTO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) return "authenticated/todo/editor-current";
         Task task = taskDTO.toTask(todoRepository);
         taskRepository.save(task);
