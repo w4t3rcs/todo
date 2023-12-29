@@ -1,4 +1,4 @@
-package com.w4t3rcs.newtodo.controller.simple;
+package com.w4t3rcs.newtodo.controller.simple.common;
 
 import com.w4t3rcs.newtodo.model.data.dao.UserRepository;
 import com.w4t3rcs.newtodo.model.data.dto.UserDTO;
@@ -7,7 +7,6 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;

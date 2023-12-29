@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link rel="stylesheet" th:href="@{/styles/common/home.css}">
+    <script th:src="@{/scripts/common/home.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            <div class="button-panel">
+                <button class="action-button" th:onclick="navigateTo('/api')">Administration</button>
+                <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
+                <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
+                <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
+            </div>
+
+            <h1>Welcome to <span style="color: #27ae60; font-style: italic;">Todo App</span></h1>
+            <p>Empower your day with the ultimate task management experience!</p>
+            <p>Organize your tasks effortlessly, boost your productivity, and achieve your goals with our <strong>intuitive</strong> todo website!</p>
+            <p>Key features include:</p>
+            <ul>
+                <li>📅 Date and time-sensitive task scheduling</li>
+                <li>🚀 Priority levels to focus on what matters most</li>
+                <li>📝 Notes and details for comprehensive task descriptions</li>
+                <li>📊 Progress tracking to visualize your achievements</li>
+            </ul>
+        </div>
+
+        <div class="right-container">
+            <h2>Why Todo App?</h2>
+            <p>Our Todo App is designed to make task management a breeze. Here's why you should choose us:</p>
+            <ul>
+                <li>🌟 User-friendly interface for a seamless experience</li>
+                <li>🔒 Secure and private task management</li>
+                <li>📱 Access your tasks from anywhere, anytime</li>
+                <li>💡 Innovative features to enhance your productivity</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

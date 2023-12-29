@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link rel="stylesheet" th:href="@{/styles/common/home.css}">
+    <script th:src="@{/scripts/common/home.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="left-container">
+            <div class="button-panel">
+                <button class="action-button" th:onclick="navigateTo('/api/application')">Application Info</button>
+                <button class="action-button" th:onclick="navigateTo('/api/account')">Users Info</button>
+                <button class="action-button" th:onclick="navigateTo('/api/todo')">Todos Info</button>
+                <button class="action-button" th:onclick="navigateTo('/api/task')">Tasks Info</button>
+                <button class="action-button" th:onclick="navigateTo('/')">Home</button>
+                <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
+                <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
+                <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
+            </div>
+
+            <h1>Welcome to <span style="color: #27ae60; font-style: italic;">Administration Centre</span></h1>
+            <p>Feel proud to be one of us!</p>
+            <p>You need to show people the right way and the example for them!</p>
+            <p>Rules are rules for everyone!</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.w4t3rcs.newtodo.controller.simple;
+package com.w4t3rcs.newtodo.controller.simple.todo;
 
 import com.w4t3rcs.newtodo.model.data.dao.TaskRepository;
 import com.w4t3rcs.newtodo.model.data.dao.TodoRepository;

@@ -1,4 +1,4 @@
-package com.w4t3rcs.newtodo.controller.simple;
+package com.w4t3rcs.newtodo.controller.simple.common;
 
 import com.w4t3rcs.newtodo.model.data.dao.UserRepository;
 import com.w4t3rcs.newtodo.model.entity.User;
