@@ -24,6 +24,26 @@ public class AccountInfoController {
         return (List<User>) userRepository.findAll();
     }
 
+    @GetMapping(params = "admin")
+    public List<User> getAllAdmins() {
+        return userRepository.findAllByRole("admin");
+    }
+
+    @GetMapping(params = "default")
+    public List<User> getAllDefaultUsers() {
+        return userRepository.findAllByRole("user");
+    }
+
+    @GetMapping(params = "username")
+    public List<String> getAllUsernames() {
+        return userRepository.findAllUsernames();
+    }
+
+    @GetMapping(params = "email")
+    public List<String> getAllEmails() {
+        return userRepository.findAllEmails();
+    }
+
     @GetMapping("/{name}")
     public ResponseEntity<User> getUserByName(@PathVariable String name) {
         return ResponseEntity.of(userRepository.findByName(name));
