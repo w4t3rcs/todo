@@ -1,4 +1,4 @@
-package com.w4t3rcs.newtodo.model.entity;
+package com.w4t3rcs.newtodo.model.entity.todo;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;

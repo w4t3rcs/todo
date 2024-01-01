@@ -1,7 +1,7 @@
 package com.w4t3rcs.newtodo.controller.rest.admin;
 
 import com.w4t3rcs.newtodo.model.data.dao.TodoRepository;
-import com.w4t3rcs.newtodo.model.entity.Todo;
+import com.w4t3rcs.newtodo.model.entity.todo.Todo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

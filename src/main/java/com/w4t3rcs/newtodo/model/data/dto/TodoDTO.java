@@ -1,8 +1,8 @@
 package com.w4t3rcs.newtodo.model.data.dto;
 
-import com.w4t3rcs.newtodo.model.entity.Todo;
-import com.w4t3rcs.newtodo.model.entity.User;
-import com.w4t3rcs.newtodo.model.service.getter.Getter;
+import com.w4t3rcs.newtodo.model.entity.todo.Todo;
+import com.w4t3rcs.newtodo.model.entity.authentication.User;
+import com.w4t3rcs.newtodo.model.common.Getter;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;

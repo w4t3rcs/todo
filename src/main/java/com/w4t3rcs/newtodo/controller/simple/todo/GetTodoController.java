@@ -2,10 +2,10 @@ package com.w4t3rcs.newtodo.controller.simple.todo;
 
 import com.w4t3rcs.newtodo.model.data.dao.TaskRepository;
 import com.w4t3rcs.newtodo.model.data.dao.TodoRepository;
-import com.w4t3rcs.newtodo.model.entity.Task;
-import com.w4t3rcs.newtodo.model.entity.Todo;
-import com.w4t3rcs.newtodo.model.entity.User;
-import com.w4t3rcs.newtodo.model.service.getter.Getter;
+import com.w4t3rcs.newtodo.model.entity.todo.Task;
+import com.w4t3rcs.newtodo.model.entity.todo.Todo;
+import com.w4t3rcs.newtodo.model.entity.authentication.User;
+import com.w4t3rcs.newtodo.model.common.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

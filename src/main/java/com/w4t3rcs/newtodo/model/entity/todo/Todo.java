@@ -1,5 +1,6 @@
-package com.w4t3rcs.newtodo.model.entity;
+package com.w4t3rcs.newtodo.model.entity.todo;
 
+import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;

@@ -26,14 +26,14 @@
                 <br>
                 <br>
                 <label for="timePeriod">Time Period for Notifications: </label>
-                <input type="text" list="timeOptions" th:field="*{schedule.method.timePeriod}" id="timePeriod">
+                <input type="text" list="timeOptions" th:field="*{schedule.timePeriod}" id="timePeriod">
                 <datalist id="timeOptions">
                     <option th:each="timePeriod : ${timePeriods}" th:value="${timePeriod}" th:text="${timePeriod}"></option>
                 </datalist>
                 <br>
                 <br>
                 <label for="count">How much times: </label>
-                <input type="range" min="1" max="7"  th:field="*{schedule.method.count}" id="count">
+                <input type="range" min="1" max="7"  th:field="*{schedule.count}" id="count">
                 <br>
                 <br>
                 <label for="time">Notification will be sent at: </label>

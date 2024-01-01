@@ -1,11 +1,11 @@
 package com.w4t3rcs.newtodo.controller.simple.common;
 
 import com.w4t3rcs.newtodo.model.data.dto.NotificationDTO;
-import com.w4t3rcs.newtodo.model.entity.Notification;
-import com.w4t3rcs.newtodo.model.entity.TimePeriod;
-import com.w4t3rcs.newtodo.model.entity.User;
+import com.w4t3rcs.newtodo.model.entity.message.Notification;
+import com.w4t3rcs.newtodo.model.entity.time.TimePeriod;
+import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import com.w4t3rcs.newtodo.model.properties.MessageProperties;
-import com.w4t3rcs.newtodo.model.service.getter.Getter;
+import com.w4t3rcs.newtodo.model.common.Getter;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -49,8 +49,9 @@ public class NotificationController {
 
     @PostMapping
     public String postNotification(@ModelAttribute("notification") @Valid NotificationDTO notificationDTO, BindingResult bindingResult) {
-        Notification notification = notificationDTO.toNotification(messageProperties, currentUserGetter);
+        Notification notification = notificationDTO.toNotification(currentUserGetter);
         System.out.println(notification);
+        System.out.println(notification.getMessage(messageProperties));
         return "redirect:/account"; // TODO: 01.01.2024
     }
 }

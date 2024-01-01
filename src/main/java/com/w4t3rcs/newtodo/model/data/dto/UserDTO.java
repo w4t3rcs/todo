@@ -1,6 +1,6 @@
 package com.w4t3rcs.newtodo.model.data.dto;
 
-import com.w4t3rcs.newtodo.model.entity.User;
+import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import jakarta.validation.constraints.*;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;

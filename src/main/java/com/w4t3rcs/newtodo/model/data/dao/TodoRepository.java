@@ -1,7 +1,7 @@
 package com.w4t3rcs.newtodo.model.data.dao;
 
-import com.w4t3rcs.newtodo.model.entity.Todo;
-import com.w4t3rcs.newtodo.model.entity.User;
+import com.w4t3rcs.newtodo.model.entity.todo.Todo;
+import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

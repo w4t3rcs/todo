@@ -2,7 +2,7 @@ package com.w4t3rcs.newtodo.model.data.dto;
 
 import com.w4t3rcs.newtodo.model.data.dao.TaskRepository;
 import com.w4t3rcs.newtodo.model.data.dao.TodoRepository;
-import com.w4t3rcs.newtodo.model.entity.Task;
+import com.w4t3rcs.newtodo.model.entity.todo.Task;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
