@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link rel="stylesheet" th:href="@{/styles/authenticated/user.css}">
+    <script th:src="@{/scripts/common/home.js}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="button-panel">
+            <button class="action-button" th:onclick="navigateTo('/')">Home</button>
+            <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
+            <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
+            <button class="action-button" th:onclick="navigateTo('/exit')">Exit</button>
+        </div>
+
+        <div class="text-container">
+            <h2>You can set up your notifications here</h2>
+            <form th:method="POST" th:action="@{/notification}" th:object="${notification}">
+                <label for="method">Sending Method:</label>
+                <input type="text" list="methodOptions" th:field="*{method}" id="method">
+                <datalist id="methodOptions">
+                    <option th:each="method : ${notificationMethods}" th:value="${method}" th:text="${method}"></option>
+                </datalist>
+                <br>
+                <br>
+                <label for="timePeriod">Time Period for Notifications: </label>
+                <input type="text" list="timeOptions" th:field="*{schedule.method.timePeriod}" id="timePeriod">
+                <datalist id="timeOptions">
+                    <option th:each="timePeriod : ${timePeriods}" th:value="${timePeriod}" th:text="${timePeriod}"></option>
+                </datalist>
+                <br>
+                <br>
+                <label for="count">How much times: </label>
+                <input type="range" min="1" max="7"  th:field="*{schedule.method.count}" id="count">
+                <br>
+                <br>
+                <label for="time">Notification will be sent at: </label>
+                <input type="time" th:field="*{schedule.time}" id="time">
+                <br>
+                <br>
+                <label for="end">Last day of Notifications: </label>
+                <input type="date" th:field="*{schedule.end}" id="end">
+                <br>
+                <br>
+                <input type="submit" class="action-button">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

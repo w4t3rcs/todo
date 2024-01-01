@@ -41,7 +41,7 @@ public class EditTodoController {
     public String getCurrentEditorPage(@PathVariable Long id, Model model) {
         User currentUser = currentUserGetter.get();
         Todo todo = todoRepository.findByUserAndId(currentUser, id).orElseThrow();
-        model.addAttribute("currentTodo", TodoDTO.fromTask(todo));
+        model.addAttribute("currentTodo", TodoDTO.fromTodo(todo));
         Iterable<Task> tasks = taskRepository.findAllByTodo(todo);
         model.addAttribute("currentTasks", tasks);
         return "authenticated/todo/editor-current";

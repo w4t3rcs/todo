@@ -25,5 +25,7 @@ logging:
 todo:
   security:
     patterns-for-all: /, /login, /register, /styles/**, /scripts/**, /images/**
-    patterns-for-users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**
+    patterns-for-users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**, /notification, /notification/**
     patterns-for-admins: /api, /api/**
+  message:
+    notification-text: Hello, %s!%nWe are happy to remind you about your Todos!%nDon't forget to finish them!%nYour da best Todo Support!

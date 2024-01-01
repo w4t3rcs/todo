@@ -15,7 +15,7 @@ public class TodoDTO {
     private String name;
     private User user;
 
-    public static TodoDTO fromTask(Todo todo) {
+    public static TodoDTO fromTodo(Todo todo) {
         TodoDTO todoDTO = new TodoDTO();
         todoDTO.setId(todo.getId());
         todoDTO.setName(todo.getName());
