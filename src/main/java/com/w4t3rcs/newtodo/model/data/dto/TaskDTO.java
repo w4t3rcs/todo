@@ -32,7 +32,7 @@ public class TaskDTO {
                 .id(this.getId())
                 .description(this.getDescription())
                 .finished(this.isFinished())
-                .todo(taskRepository.existsById(this.getId()) ? taskRepository.findById(id).orElseThrow().getTodo() : todoRepository.findTopByOrderByIdDesc().orElseThrow())
+                .todo(this.getId() != null && taskRepository.existsById(this.getId()) ? taskRepository.findById(this.getId()).orElseThrow().getTodo() : todoRepository.findTopByOrderByIdDesc().orElseThrow())
                 .build();
     }
 }
