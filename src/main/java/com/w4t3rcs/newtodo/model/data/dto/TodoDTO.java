@@ -6,7 +6,9 @@ import com.w4t3rcs.newtodo.model.common.Getter;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 @Data
 public class TodoDTO {
     private Long id;
@@ -16,18 +18,18 @@ public class TodoDTO {
     private User user;
 
     public static TodoDTO fromTodo(Todo todo) {
-        TodoDTO todoDTO = new TodoDTO();
-        todoDTO.setId(todo.getId());
-        todoDTO.setName(todo.getName());
-        todoDTO.setUser(todo.getUser());
-        return todoDTO;
+        return TodoDTO.builder()
+                .id(todo.getId())
+                .name(todo.getName())
+                .user(todo.getUser())
+                .build();
     }
 
     public Todo toTodo(Getter<User> currentUserGetter) {
-        Todo todo = new Todo();
-        if (this.getId() != null) todo.setId(this.getId());
-        todo.setName(this.getName());
-        todo.setUser(this.getUser() == null ? currentUserGetter.get() : this.getUser());
-        return todo;
+        return Todo.builder()
+                .id(this.getId())
+                .name(this.getName())
+                .user(this.getUser() == null ? currentUserGetter.get() : this.getUser())
+                .build();
     }
 }

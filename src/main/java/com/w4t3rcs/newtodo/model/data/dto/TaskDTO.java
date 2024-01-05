@@ -6,7 +6,9 @@ import com.w4t3rcs.newtodo.model.entity.todo.Task;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 @Data
 public class TaskDTO {
     private Long id;
@@ -16,24 +18,19 @@ public class TaskDTO {
     private boolean finished;
 
     public static TaskDTO fromTask(Task task) {
-        TaskDTO taskDTO = new TaskDTO();
-        taskDTO.setId(task.getId());
-        taskDTO.setDescription(task.getDescription());
-        taskDTO.setFinished(task.isFinished());
-        return taskDTO;
+        return TaskDTO.builder()
+                .id(task.getId())
+                .description(task.getDescription())
+                .finished(task.isFinished())
+                .build();
     }
 
     public Task toTask(TodoRepository todoRepository, TaskRepository taskRepository) {
-        Task task = new Task();
-        if (this.getId() != null) task.setId(this.getId());
-        task.setDescription(this.getDescription());
-        task.setFinished(this.isFinished());
-        if (taskRepository.existsById(this.getId())) {
-            task.setTodo(taskRepository.findById(id).orElseThrow().getTodo());
-        } else {
-            task.setTodo(todoRepository.findTopByOrderByIdDesc().orElseThrow());
-        }
-
-        return task;
+        return Task.builder()
+                .id(this.getId())
+                .description(this.getDescription())
+                .finished(this.isFinished())
+                .todo(taskRepository.existsById(this.getId()) ? taskRepository.findById(id).orElseThrow().getTodo() : todoRepository.findTopByOrderByIdDesc().orElseThrow())
+                .build();
     }
 }

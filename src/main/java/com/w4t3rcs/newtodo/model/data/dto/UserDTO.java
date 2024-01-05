@@ -23,6 +23,13 @@ public class UserDTO {
     private LocalDate birthdate;
 
     public User toUser(PasswordEncoder passwordEncoder) {
-        return new User(UUID.randomUUID().toString(), this.getName(), passwordEncoder.encode(password), this.getEmail(), this.getBirthdate(), "user");
+        return User.builder()
+                .id(UUID.randomUUID().toString())
+                .name(this.getName())
+                .password(passwordEncoder.encode(password))
+                .email(this.getEmail())
+                .birthdate(this.getBirthdate())
+                .role("user")
+                .build();
     }
 }
