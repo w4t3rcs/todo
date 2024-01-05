@@ -26,7 +26,7 @@
                 </datalist>
                 <br>
                 <br>
-                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('end')}" th:errors="*{deadline}"></span>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('deadline')}" th:errors="*{deadline}"></span>
                 <label for="end">Last day of Notifications: </label>
                 <input type="date" th:field="*{deadline.deadline}" id="end">
                 <br>
