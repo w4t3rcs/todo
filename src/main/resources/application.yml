@@ -9,16 +9,16 @@ spring:
     name: Todo-App
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: Mu18052007
+    username: ***
+    password: ***
     url: jdbc:mysql://localhost:3306/newtodo_schema
   mvc:
     hiddenmethod:
       filter:
         enabled: true
   mail:
-    username: newtodo01@gmail.com
-    password: uscy utwn nkjz fkml
+    username: ***
+    password: ***
     host: smtp.gmail.com
     port: 587
     properties:
