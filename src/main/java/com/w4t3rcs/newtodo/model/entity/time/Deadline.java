@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 @ToString
 @Getter
@@ -14,13 +13,16 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Embeddable
-public class Schedule {
-    @NotNull(message = "Invalid time period")
-    @Column(name = "time_period_value")
-    private TimePeriod timePeriod;
-    private int count;
-    @NotNull(message = "Invalid time")
-    private LocalTime time;
+public class Deadline {
     @NotNull(message = "Invalid date")
-    private LocalDate end;
+    @Column(name = "end")
+    private LocalDate deadline;
+
+    public boolean isEnded() {
+        return isEnded(LocalDate.now());
+    }
+
+    public boolean isEnded(LocalDate localDate) {
+        return localDate.isAfter(this.getDeadline());
+    }
 }
