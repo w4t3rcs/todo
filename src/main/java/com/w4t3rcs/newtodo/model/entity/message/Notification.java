@@ -54,7 +54,8 @@ public class Notification implements Persistable<Long>, TextMessage, Formatter<S
     @Override
     public String getRecipientAddress() {
         return switch (getMethod()) {
-            case EMAIL -> getTo().getEmail();
+            case EMAIL -> this.getTo().getEmail();
+            case MESSAGE -> this.getTo().getName();
         };
     }
 
@@ -69,6 +70,7 @@ public class Notification implements Persistable<Long>, TextMessage, Formatter<S
     }
 
     public enum Method {
-        EMAIL
+        EMAIL,
+        MESSAGE
     }
 }

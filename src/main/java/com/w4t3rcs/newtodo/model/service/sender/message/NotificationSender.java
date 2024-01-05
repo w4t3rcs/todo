@@ -1,4 +1,4 @@
-package com.w4t3rcs.newtodo.model.service.sender;
+package com.w4t3rcs.newtodo.model.service.sender.message;
 
 import com.w4t3rcs.newtodo.model.common.MessageSender;
 import com.w4t3rcs.newtodo.model.common.ServiceSender;
@@ -44,6 +44,7 @@ public class NotificationSender implements MessageSender {
     private ServiceSender getServiceSenderByMethod(Notification.Method method) {
         return switch (method) {
             case EMAIL -> applicationContext.getBean("emailSender", ServiceSender.class);
+            case MESSAGE -> applicationContext.getBean("notificationHolderSender", ServiceSender.class);
         };
     }
 }

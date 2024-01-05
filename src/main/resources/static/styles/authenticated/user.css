@@ -55,6 +55,43 @@ body {
     color: #fff;
 }
 
+
+.notifications-button {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    background-color: #fff;
+    color: #53db34;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.notifications-button:hover {
+    background-color: #35502c;
+    color: #fff;
+}
+
+.exit-button {
+    margin-right: 10px;
+    margin-left: 10px;
+    font-weight: bold;
+    background-color: #fff;
+    color: #db3434;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.exit-button:hover {
+    background-color: #502c2c;
+    color: #fff;
+}
+
 h2 {
     color: #27ae60;
     font-size: 24px;

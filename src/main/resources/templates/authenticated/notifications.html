@@ -11,20 +11,17 @@
 <div class="container">
     <div class="button-panel">
         <button class="action-button" th:onclick="navigateTo('/')">Home</button>
+        <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
         <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
         <button class="action-button" th:onclick="navigateTo('/notification')">Notification</button>
-        <button class="notifications-button" th:onclick="navigateTo('/notifications')">Notifications</button>
         <button class="exit-button" th:onclick="navigateTo('/exit')">Exit</button>
     </div>
 
-    <div class="text-container">
-        <h2 th:text="${user.name}"></h2>
-        <h4>ID:</h4>
-        <p th:text="${user.id}"></p>
-        <h4>Birthdate:</h4>
-        <p th:text="${user.birthdate}"></p>
-        <h4>Email:</h4>
-        <p th:text="${user.email}"></p>
+    <div class="text-container" th:each="currentNotification : ${notifications}">
+        <h3 th:text="${currentNotification.getSentDate()}"></h3>
+        <h3 th:text="${notificationText}"></h3>
+        <br>
+        <br>
     </div>
 </div>
 </body>

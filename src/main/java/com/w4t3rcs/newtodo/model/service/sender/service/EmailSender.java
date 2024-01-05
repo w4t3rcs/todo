@@ -1,4 +1,4 @@
-package com.w4t3rcs.newtodo.model.service.sender;
+package com.w4t3rcs.newtodo.model.service.sender.service;
 
 import com.w4t3rcs.newtodo.model.common.ServiceSender;
 import com.w4t3rcs.newtodo.model.entity.message.TextMessage;
@@ -8,7 +8,7 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-@Service("emailSender")
+@Service
 public class EmailSender implements ServiceSender {
     private final JavaMailSender mailSender;
     private final MessageProperties messageProperties;

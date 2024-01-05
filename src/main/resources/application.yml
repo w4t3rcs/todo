@@ -43,7 +43,7 @@ logging:
 todo:
   security:
     patterns-for-all: /, /login, /register, /styles/**, /scripts/**, /images/**
-    patterns-for-users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**, /notification, /notification/**
+    patterns-for-users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**, /notification, /notification/**, /notifications
     patterns-for-admins: /api, /api/**
   message:
     notification-subject: Todo Notification for %s!

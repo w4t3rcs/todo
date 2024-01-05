@@ -22,12 +22,13 @@ public class NotificationDTO {
     @NotNull(message = "Invalid schedule")
     private Deadline deadline;
     private boolean enabled;
+    private String receivingAddress;
 
     public static NotificationDTO fromNotification(Notification notification) {
         return NotificationDTO.builder()
                 .id(notification.getId())
                 .to(notification.getTo())
-                .method(notification.getMethod())
+                .method(notification.getMethod() == null ? Notification.Method.EMAIL : notification.getMethod())
                 .deadline(notification.getDeadline())
                 .enabled(notification.isEnabled())
                 .build();
