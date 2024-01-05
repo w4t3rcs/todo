@@ -29,7 +29,7 @@ public class NotificationSender implements MessageSender {
     }
 
     @Override
-    @Scheduled(cron = "0 15 13 ? * FRI")
+    @Scheduled(cron = "0 0 12 ? * FRI")
     public void send() {
         log.debug("Sending notifications has been started!");
         userRepository.findAll().forEach(user ->
