@@ -8,5 +8,6 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "todo.message")
 @Component
 public class MessageProperties {
+    private String notificationSubject;
     private String notificationText;
 }
