@@ -46,7 +46,7 @@ todo:
     patterns-for-users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**, /notification, /notification/**
     patterns-for-admins: /api, /api/**
   message:
-    notification-subject: Todo Notification!
+    notification-subject: Todo Notification for %s!
     notification-text: Hello, %s!%nWe are happy to remind you about your Todos!%nDon't forget to finish them!%nYour da best Todo Support!
 server:
   port: ${SERVER_PORT}

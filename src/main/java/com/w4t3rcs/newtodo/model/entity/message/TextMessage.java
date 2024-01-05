@@ -1,13 +1,8 @@
 package com.w4t3rcs.newtodo.model.entity.message;
 
-import com.w4t3rcs.newtodo.model.common.Formatter;
+import com.w4t3rcs.newtodo.model.common.HasRecipientAddress;
 import com.w4t3rcs.newtodo.model.common.HasMessage;
-import com.w4t3rcs.newtodo.model.properties.MessageProperties;
+import com.w4t3rcs.newtodo.model.common.HasSenderAddress;
 
-public interface TextMessage extends HasMessage<String>, Formatter<String, String> {
-    @Override
-    String getMessage(MessageProperties messageProperties);
-
-    @Override
-    String format(String text);
+public interface TextMessage extends HasMessage<String>, HasSenderAddress<String>, HasRecipientAddress<String> {
 }

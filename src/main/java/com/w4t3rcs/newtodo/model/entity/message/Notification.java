@@ -1,5 +1,6 @@
 package com.w4t3rcs.newtodo.model.entity.message;
 
+import com.w4t3rcs.newtodo.model.common.Formatter;
 import com.w4t3rcs.newtodo.model.entity.time.Deadline;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import com.w4t3rcs.newtodo.model.properties.MessageProperties;
@@ -18,7 +19,7 @@ import org.springframework.data.domain.Persistable;
 @AllArgsConstructor
 @Entity
 @Table(name = "notifications")
-public class Notification implements Persistable<Long>, TextMessage {
+public class Notification implements Persistable<Long>, TextMessage, Formatter<String, String> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -36,8 +37,25 @@ public class Notification implements Persistable<Long>, TextMessage {
     private boolean enabled;
 
     @Override
-    public String getMessage(MessageProperties messageProperties) {
+    public String getMessageSubject(MessageProperties messageProperties) {
+        return format(messageProperties.getNotificationSubject());
+    }
+
+    @Override
+    public String getMessageBody(MessageProperties messageProperties) {
         return format(messageProperties.getNotificationText());
+    }
+
+    @Override
+    public String getSenderAddress() {
+        return null;
+    }
+
+    @Override
+    public String getRecipientAddress() {
+        return switch (getMethod()) {
+            case EMAIL -> getTo().getEmail();
+        };
     }
 
     @Override
