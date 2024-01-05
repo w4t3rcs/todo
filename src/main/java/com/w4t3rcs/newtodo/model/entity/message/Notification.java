@@ -1,16 +1,19 @@
 package com.w4t3rcs.newtodo.model.entity.message;
 
-import com.w4t3rcs.newtodo.model.entity.time.Schedule;
+import com.w4t3rcs.newtodo.model.entity.time.Deadline;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import com.w4t3rcs.newtodo.model.properties.MessageProperties;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
+import org.hibernate.type.NumericBooleanConverter;
 import org.springframework.data.domain.Persistable;
 
 @ToString
 @Getter
 @Setter
+@SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
@@ -27,7 +30,10 @@ public class Notification implements Persistable<Long>, TextMessage {
     private Method method;
     @NotNull(message = "Invalid schedule")
     @Embedded
-    private Schedule schedule;
+    private Deadline deadline;
+    @Column(name = "is_enabled")
+    @Convert(converter = NumericBooleanConverter.class)
+    private boolean enabled;
 
     @Override
     public String getMessage(MessageProperties messageProperties) {
