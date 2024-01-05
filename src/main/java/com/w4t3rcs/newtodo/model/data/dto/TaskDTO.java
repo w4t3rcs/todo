@@ -6,9 +6,11 @@ import com.w4t3rcs.newtodo.model.entity.todo.Task;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 @SuperBuilder
+@NoArgsConstructor
 @Data
 public class TaskDTO {
     private Long id;
