@@ -1,4 +1,4 @@
-package com.w4t3rcs.newtodo.model.common;
+package com.w4t3rcs.newtodo.model.common.container;
 
 import com.w4t3rcs.newtodo.model.properties.MessageProperties;
 

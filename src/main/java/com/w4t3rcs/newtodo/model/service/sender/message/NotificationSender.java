@@ -1,8 +1,8 @@
 package com.w4t3rcs.newtodo.model.service.sender.message;
 
-import com.w4t3rcs.newtodo.model.common.MessageSender;
-import com.w4t3rcs.newtodo.model.common.ServiceSender;
-import com.w4t3rcs.newtodo.model.common.SoundPropertiesPlayer;
+import com.w4t3rcs.newtodo.model.common.executor.sender.MessageSender;
+import com.w4t3rcs.newtodo.model.common.executor.sender.ServiceSender;
+import com.w4t3rcs.newtodo.model.common.executor.player.SoundPropertiesPlayer;
 import com.w4t3rcs.newtodo.model.data.dao.NotificationRepository;
 import com.w4t3rcs.newtodo.model.data.dao.UserRepository;
 import com.w4t3rcs.newtodo.model.entity.message.Notification;

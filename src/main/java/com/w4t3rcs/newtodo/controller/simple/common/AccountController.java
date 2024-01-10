@@ -2,7 +2,7 @@ package com.w4t3rcs.newtodo.controller.simple.common;
 
 import com.w4t3rcs.newtodo.model.data.dao.UserRepository;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
-import com.w4t3rcs.newtodo.model.common.Getter;
+import com.w4t3rcs.newtodo.model.common.container.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;

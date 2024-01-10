@@ -1,6 +1,6 @@
 package com.w4t3rcs.newtodo.model.service.player;
 
-import com.w4t3rcs.newtodo.model.common.StringPlayer;
+import com.w4t3rcs.newtodo.model.common.executor.player.StringPlayer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;

@@ -1,7 +1,7 @@
 package com.w4t3rcs.newtodo.controller.simple.common;
 
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
-import com.w4t3rcs.newtodo.model.common.Getter;
+import com.w4t3rcs.newtodo.model.common.container.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

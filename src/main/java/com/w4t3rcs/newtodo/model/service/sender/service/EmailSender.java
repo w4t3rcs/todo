@@ -1,6 +1,6 @@
 package com.w4t3rcs.newtodo.model.service.sender.service;
 
-import com.w4t3rcs.newtodo.model.common.ServiceSender;
+import com.w4t3rcs.newtodo.model.common.executor.sender.ServiceSender;
 import com.w4t3rcs.newtodo.model.entity.message.TextMessage;
 import com.w4t3rcs.newtodo.model.properties.MessageProperties;
 import org.springframework.beans.factory.annotation.Autowired;

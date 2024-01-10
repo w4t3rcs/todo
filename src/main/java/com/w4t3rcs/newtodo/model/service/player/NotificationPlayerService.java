@@ -1,7 +1,7 @@
 package com.w4t3rcs.newtodo.model.service.player;
 
-import com.w4t3rcs.newtodo.model.common.SoundPropertiesPlayer;
-import com.w4t3rcs.newtodo.model.common.StringPlayer;
+import com.w4t3rcs.newtodo.model.common.executor.player.SoundPropertiesPlayer;
+import com.w4t3rcs.newtodo.model.common.executor.player.StringPlayer;
 import com.w4t3rcs.newtodo.model.properties.SoundProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;

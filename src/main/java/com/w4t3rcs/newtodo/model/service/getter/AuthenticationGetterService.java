@@ -1,6 +1,6 @@
 package com.w4t3rcs.newtodo.model.service.getter;
 
-import com.w4t3rcs.newtodo.model.common.Getter;
+import com.w4t3rcs.newtodo.model.common.container.Getter;
 import com.w4t3rcs.newtodo.model.data.dao.UserRepository;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import lombok.extern.slf4j.Slf4j;

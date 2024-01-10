@@ -4,7 +4,7 @@ import com.w4t3rcs.newtodo.model.data.dao.NotificationRepository;
 import com.w4t3rcs.newtodo.model.data.dto.NotificationDTO;
 import com.w4t3rcs.newtodo.model.entity.message.Notification;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
-import com.w4t3rcs.newtodo.model.common.Getter;
+import com.w4t3rcs.newtodo.model.common.container.Getter;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

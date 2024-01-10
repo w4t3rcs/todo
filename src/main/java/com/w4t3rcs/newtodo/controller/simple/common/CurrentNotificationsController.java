@@ -1,6 +1,6 @@
 package com.w4t3rcs.newtodo.controller.simple.common;
 
-import com.w4t3rcs.newtodo.model.common.Getter;
+import com.w4t3rcs.newtodo.model.common.container.Getter;
 import com.w4t3rcs.newtodo.model.data.dao.NotificationHolderRepository;
 import com.w4t3rcs.newtodo.model.data.dao.NotificationRepository;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;

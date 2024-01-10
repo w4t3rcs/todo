@@ -1,8 +1,8 @@
 package com.w4t3rcs.newtodo.model.entity.message;
 
-import com.w4t3rcs.newtodo.model.common.HasRecipientAddress;
-import com.w4t3rcs.newtodo.model.common.HasMessage;
-import com.w4t3rcs.newtodo.model.common.HasSenderAddress;
+import com.w4t3rcs.newtodo.model.common.container.HasRecipientAddress;
+import com.w4t3rcs.newtodo.model.common.container.HasMessage;
+import com.w4t3rcs.newtodo.model.common.container.HasSenderAddress;
 
 public interface TextMessage extends HasMessage<String>, HasSenderAddress<String>, HasRecipientAddress<String> {
 }

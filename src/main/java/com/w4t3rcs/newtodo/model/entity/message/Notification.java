@@ -1,6 +1,6 @@
 package com.w4t3rcs.newtodo.model.entity.message;
 
-import com.w4t3rcs.newtodo.model.common.Formatter;
+import com.w4t3rcs.newtodo.model.common.transformer.Formatter;
 import com.w4t3rcs.newtodo.model.entity.time.Deadline;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import com.w4t3rcs.newtodo.model.properties.MessageProperties;

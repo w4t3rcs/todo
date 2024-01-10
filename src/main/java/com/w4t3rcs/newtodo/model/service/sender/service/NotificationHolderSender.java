@@ -1,6 +1,6 @@
 package com.w4t3rcs.newtodo.model.service.sender.service;
 
-import com.w4t3rcs.newtodo.model.common.ServiceSender;
+import com.w4t3rcs.newtodo.model.common.executor.sender.ServiceSender;
 import com.w4t3rcs.newtodo.model.data.dao.NotificationHolderRepository;
 import com.w4t3rcs.newtodo.model.entity.holder.NotificationHolder;
 import com.w4t3rcs.newtodo.model.entity.message.Notification;
