@@ -4,14 +4,13 @@ import com.w4t3rcs.newtodo.model.common.container.Getter;
 import com.w4t3rcs.newtodo.model.data.dao.NotificationHolderRepository;
 import com.w4t3rcs.newtodo.model.data.dao.NotificationRepository;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
-import com.w4t3rcs.newtodo.model.entity.holder.NotificationHolder;
 import com.w4t3rcs.newtodo.model.entity.message.Notification;
 import com.w4t3rcs.newtodo.model.exception.NotificationNotEnabledException;
 import com.w4t3rcs.newtodo.model.properties.MessageProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/notifications")
@@ -30,24 +29,17 @@ public class CurrentNotificationsController {
         this.currentUserGetter = currentUserGetter;
     }
 
-    @ModelAttribute("notification")
-    public Notification notification() {
-        User currentUser = currentUserGetter.get();
-        return notificationRepository.findByTo(currentUser).orElseThrow(NotificationNotEnabledException::new);
-    }
-
-    @ModelAttribute("notifications")
-    public Iterable<NotificationHolder> notifications(@ModelAttribute Notification notification) {
-        return notificationHolderRepository.findAllByNotification(notification);
-    }
-
-    @ModelAttribute("notificationText")
-    public String notificationText(@ModelAttribute Notification notification) {
-        return notification.getMessageBody(messageProperties);
-    }
-
     @GetMapping
-    public String getNotificationsPage() {
-        return "authenticated/notifications";
+    public String getNotificationsPage(Model model) {
+        try {
+            User currentUser = currentUserGetter.get();
+            Notification notification = notificationRepository.findByTo(currentUser).orElseThrow(NotificationNotEnabledException::new);
+            model.addAttribute("notification", notification);
+            model.addAttribute("notifications", notificationHolderRepository.findAllByNotification(notification));
+            model.addAttribute("notificationText", notification.getMessageBody(messageProperties));
+            return "authenticated/notifications";
+        } catch (NotificationNotEnabledException e) {
+            return "authenticated/notifications-empty";
+        }
     }
 }

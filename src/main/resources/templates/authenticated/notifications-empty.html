@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo</title>
+    <link rel="icon" type="image/x-icon" th:href="@{/images/logo.png}">
+    <link rel="stylesheet" th:href="@{/styles/authenticated/user.css}">
+    <script th:src="@{/scripts/common/home.js}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="button-panel">
+        <button class="action-button" th:onclick="navigateTo('/')">Home</button>
+        <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
+        <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>
+        <button class="action-button" th:onclick="navigateTo('/notification')">Notification</button>
+        <button class="exit-button" th:onclick="navigateTo('/exit')">Exit</button>
+    </div>
+
+    <div class="text-container">
+        <h3>No notifications :(</h3>
+        <h3><a style="text-decoration: none" class="action-button" th:href="@{/notification}">Notifications settings</a></h3>
+    </div>
+</div>
+</body>
+</html>
