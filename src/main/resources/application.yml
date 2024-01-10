@@ -48,5 +48,7 @@ todo:
   message:
     notification-subject: Todo Notification for %s!
     notification-text: Hello, %s!%nWe are happy to remind you about your Todos!%nDon't forget to finish them!%nYour da best Todo Support!
+  sound:
+    notification-path: notification.wav
 server:
   port: ${SERVER_PORT}

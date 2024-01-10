@@ -37,6 +37,11 @@ public class Notification implements Persistable<Long>, TextMessage, Formatter<S
     private boolean enabled;
 
     @Override
+    public boolean isNew() {
+        return this.getId() == null;
+    }
+
+    @Override
     public String getMessageSubject(MessageProperties messageProperties) {
         return format(messageProperties.getNotificationSubject());
     }
@@ -62,11 +67,6 @@ public class Notification implements Persistable<Long>, TextMessage, Formatter<S
     @Override
     public String format(String text) {
         return String.format(text, to.getName());
-    }
-
-    @Override
-    public boolean isNew() {
-        return this.getId() == null;
     }
 
     public enum Method {
