@@ -21,12 +21,14 @@ public class NotificationPlayerService implements SoundPropertiesPlayer {
     @Override
     @Async
     public void play(SoundProperties soundProperties) {
-        stringPlayer.play(soundProperties.getNotificationPath());
+        SoundProperties.Notification pathProperties = soundProperties.getNotification();
+        stringPlayer.play(pathProperties.getPath());
     }
 
     @Override
     @Async
     public void play(SoundProperties soundProperties, Duration duration) {
-        stringPlayer.play(soundProperties.getNotificationPath(), duration);
+        SoundProperties.Notification pathProperties = soundProperties.getNotification();
+        stringPlayer.play(pathProperties.getPath(), duration);
     }
 }

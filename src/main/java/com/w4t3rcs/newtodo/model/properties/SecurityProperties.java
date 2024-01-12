@@ -8,7 +8,12 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "todo.security")
 @Component
 public class SecurityProperties {
-    private String[] patternsForAll;
-    private String[] patternsForUsers;
-    private String[] patternsForAdmins;
+    private Pattern pattern;
+
+    @Data
+    public static class Pattern {
+        private String[] all;
+        private String[] users;
+        private String[] admins;
+    }
 }

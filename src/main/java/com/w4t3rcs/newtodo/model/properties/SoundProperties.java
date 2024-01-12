@@ -8,5 +8,10 @@ import org.springframework.stereotype.Component;
 @ConfigurationProperties(prefix = "todo.sound")
 @Component
 public class SoundProperties {
-    private String notificationPath;
+    private Notification notification;
+
+    @Data
+    public static class Notification {
+        private String path;
+    }
 }

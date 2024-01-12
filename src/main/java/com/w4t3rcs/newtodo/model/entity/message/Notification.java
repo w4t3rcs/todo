@@ -43,12 +43,14 @@ public class Notification implements Persistable<Long>, TextMessage, Formatter<S
 
     @Override
     public String getMessageSubject(MessageProperties messageProperties) {
-        return format(messageProperties.getNotificationSubject());
+        MessageProperties.Notification notificationProperties = messageProperties.getNotification();
+        return format(notificationProperties.getSubject());
     }
 
     @Override
     public String getMessageBody(MessageProperties messageProperties) {
-        return format(messageProperties.getNotificationText());
+        MessageProperties.Notification notification = messageProperties.getNotification();
+        return format(notification.getText());
     }
 
     @Override

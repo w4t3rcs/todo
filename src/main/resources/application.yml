@@ -39,16 +39,23 @@ spring:
       indent-output: true
 logging:
   level:
-    web: info
+    root: info
+    web: warn
+    sql: warn
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss.SSS
 todo:
   security:
-    patterns-for-all: /, /login, /register, /styles/**, /scripts/**, /images/**
-    patterns-for-users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**, /notification, /notification/**, /notifications
-    patterns-for-admins: /api, /api/**
+    pattern:
+      all: /, /login, /register, /styles/**, /scripts/**, /images/**
+      users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**, /notification, /notification/**, /notifications
+      admins: /api, /api/**
   message:
-    notification-subject: Todo Notification for %s!
-    notification-text: Hello, %s!%nWe are happy to remind you about your Todos!%nDon't forget to finish them!%nYour da best Todo Support!
+    notification:
+      subject: Todo Notification for %s!
+      text: Hello, %s!%nWe are happy to remind you about your Todos!%nDon't forget to finish them!%nYour da best Todo Support!
   sound:
-    notification-path: notification.wav
+    notification:
+      path: notification.wav
 server:
   port: ${SERVER_PORT}

@@ -30,11 +30,10 @@
                 <div th:each="taskFromList : ${tasks}">
                     <p th:text="${taskFromList.description}"></p>
                 </div>
-
+                <br>
+                <button type="button" class="action-button" th:onclick="navigateTo('/todo-create/task')">Add New Task</button>
                 <button type="submit" class="action-button">Save Todo List</button>
             </form>
-            <br>
-            <button class="action-button" th:onclick="navigateTo('/todo-create/task')">Add New Task</button>
         </div>
     </div>
 </body>

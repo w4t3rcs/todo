@@ -26,10 +26,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity, SecurityProperties securityProperties) throws Exception {
+        SecurityProperties.Pattern patternProperties = securityProperties.getPattern();
         return httpSecurity.authorizeHttpRequests(matcherRegistry ->
-                        matcherRegistry.requestMatchers(securityProperties.getPatternsForAll()).permitAll()
-                                .requestMatchers(securityProperties.getPatternsForUsers()).hasAnyRole("USER", "ADMIN")
-                                .requestMatchers(securityProperties.getPatternsForAdmins()).hasRole("ADMIN")
+                        matcherRegistry.requestMatchers(patternProperties.getAll()).permitAll()
+                                .requestMatchers(patternProperties.getUsers()).hasAnyRole("USER", "ADMIN")
+                                .requestMatchers(patternProperties.getAdmins()).hasRole("ADMIN")
                 ).formLogin(formLoginConfigurer -> formLoginConfigurer.loginPage("/login").defaultSuccessUrl("/"))
                 .logout(logoutConfigurer -> logoutConfigurer.clearAuthentication(true).logoutUrl("/exit")
                         .invalidateHttpSession(true).logoutSuccessUrl("/"))
