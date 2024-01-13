@@ -47,7 +47,7 @@ logging:
 todo:
   security:
     pattern:
-      all: /, /login, /register, /styles/**, /scripts/**, /images/**, /favicon.ico
+      all: /, /login, /register, /styles/**, /scripts/**, /images/**, /favicon.ico, /error, /error/**
       users: /todo, /todo/**, /todo**, /todo**/**, /exit, /account, /account/**, /notification, /notification/**, /notifications
       admins: /api, /api/**
   message:

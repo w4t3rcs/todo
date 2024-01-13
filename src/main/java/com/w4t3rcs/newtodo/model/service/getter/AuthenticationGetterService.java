@@ -25,7 +25,7 @@ public class AuthenticationGetterService implements Getter<User> {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
         User currentUser = userRepository.findByName(currentUsername).orElseThrow(() -> new UsernameNotFoundException("No account with this username!"));
-        log.info("currentUser: \"{}\" - is authenticated!", currentUser);
+        log.debug("currentUser: \"{}\" - is authenticated!", currentUser);
         return currentUser;
     }
 }
