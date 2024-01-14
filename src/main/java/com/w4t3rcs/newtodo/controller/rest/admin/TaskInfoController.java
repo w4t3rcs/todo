@@ -7,6 +7,7 @@ import com.w4t3rcs.newtodo.model.entity.todo.Task;
 import com.w4t3rcs.newtodo.model.entity.todo.Todo;
 import com.w4t3rcs.newtodo.model.entity.authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin("http://localhost:8080")
-@RequestMapping(path = "/api/task", produces = "application/json")
+@RequestMapping(path = "/api/task", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
 public class TaskInfoController {
     private final UserRepository userRepository;
