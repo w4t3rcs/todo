@@ -10,6 +10,7 @@
     <div class="container">
         <div class="left-container">
             <div class="button-panel">
+                <button class="current-button" th:onclick="navigateTo('/api')">Administration</button>
                 <button class="action-button" th:onclick="navigateTo('/api/application')">Application Info</button>
                 <button class="action-button" th:onclick="navigateTo('/api/account')">Users Info</button>
                 <button class="action-button" th:onclick="navigateTo('/api/todo')">Todos Info</button>
