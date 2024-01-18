@@ -1,3 +1,7 @@
 function navigateTo(url) {
-    window.location.href = url;
+    location.href = url;
+}
+
+function navigateBack() {
+    history.back();
 }

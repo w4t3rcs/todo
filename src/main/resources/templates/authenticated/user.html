@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo</title>
-    <link rel="stylesheet" th:href="@{/styles/authenticated/user.css}">
+    <link rel="stylesheet" th:href="@{/styles/authenticated/index.css}">
     <script th:src="@{/scripts/common/home.js}"></script>
 </head>
 <body>
     <div class="container">
         <div class="button-panel">
+            <button class="action-button" th:onclick="navigateBack()">🔙</button>
             <button class="action-button" th:onclick="navigateTo('/')">Home</button>
             <button class="action-button" th:onclick="navigateTo('/account')">Account</button>
             <button class="action-button" th:onclick="navigateTo('/todo')">Todo Home</button>

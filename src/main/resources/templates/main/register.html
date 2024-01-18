@@ -3,30 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <title>Todo</title>
-    <link rel="stylesheet" th:href="@{/styles/main/register.css}">
+    <link rel="stylesheet" th:href="@{/styles/common/authentication.css}">
 </head>
 <body>
-    <div class="registration-container">
-        <h2>Sign Up here!</h2>
-        <form th:method="POST" th:action="@{/register}" th:object="${user}">
-            <label for="name">Name:</label>
-            <span style="color: #ba5c5a" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
-            <input type="text" th:field="*{name}" id="name" placeholder="Enter your name" autocomplete="username">
-            <br>
-            <label for="password">Password:</label>
-            <span style="color: #ba5c5a" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
-            <input type="password" th:field="*{password}" id="password" placeholder="Enter your password">
-            <br>
-            <label for="email">Email:</label>
-            <span style="color: #ba5c5a" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-            <input type="email" th:field="*{email}" id="email" placeholder="Enter your email" autocomplete="email">
-            <br>
-            <label for="birthdate">Birthdate:</label>
-            <span style="color: #ba5c5a" th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></span>
-            <input type="date" th:field="*{birthdate}" id="birthdate">
-            <br>
-            <input type="submit">
-        </form>
+    <div class="container">
+        <div class="text-container">
+            <h2>Sign Up here!</h2>
+            <form th:method="POST" th:action="@{/register}" th:object="${user}">
+                <label for="name">Name:</label>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                <input type="text" th:field="*{name}" id="name" placeholder="Enter your name" autocomplete="username">
+                <br>
+                <label for="password">Password:</label>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                <input type="password" th:field="*{password}" id="password" placeholder="Enter your password">
+                <br>
+                <label for="email">Email:</label>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                <input type="email" th:field="*{email}" id="email" placeholder="Enter your email" autocomplete="email">
+                <br>
+                <label for="birthdate">Birthdate:</label>
+                <span style="color: #ba5c5a" th:if="${#fields.hasErrors('birthdate')}" th:errors="*{birthdate}"></span>
+                <input type="date" th:field="*{birthdate}" id="birthdate">
+                <br>
+                <input type="submit">
+            </form>
+        </div>
     </div>
 </body>
 </html>
