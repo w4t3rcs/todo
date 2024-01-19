@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
 @CrossOrigin("http://localhost:8080")
 @RequestMapping(path = "/api/task", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
@@ -31,17 +33,23 @@ public class TaskInfoController {
 
     @GetMapping
     public List<Task> getAllTasks() {
-        return (List<Task>) taskRepository.findAll();
+        List<Task> tasks = (List<Task>) taskRepository.findAll();
+        addLinks(tasks);
+        return tasks;
     }
 
     @GetMapping(params = "finished")
     public List<Task> getAllFinishedTasks() {
-        return taskRepository.findAllByFinished(true);
+        List<Task> tasks = taskRepository.findAllByFinished(true);
+        addLinks(tasks);
+        return tasks;
     }
 
     @GetMapping(params = "unfinished")
     public List<Task> getAllUnfinishedTasks() {
-        return taskRepository.findAllByFinished(false);
+        List<Task> tasks = taskRepository.findAllByFinished(false);
+        addLinks(tasks);
+        return tasks;
     }
 
     @GetMapping(params = "description")
@@ -79,5 +87,9 @@ public class TaskInfoController {
     @GetMapping(path = "/{id}", params = {"todo", "description"})
     public List<String> getTaskDescriptions(@PathVariable Long id) {
         return taskRepository.findDescriptionsByTodoId(id);
+    }
+
+    private void addLinks(Iterable<Task> tasks) {
+        tasks.forEach(task -> task.add(linkTo(TaskInfoController.class).slash(task.getId()).withSelfRel()));
     }
 }

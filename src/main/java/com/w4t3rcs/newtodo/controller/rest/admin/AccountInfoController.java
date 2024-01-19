@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
 @CrossOrigin("http://localhost:8080")
 @RequestMapping(path = "/api/account", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
@@ -22,17 +24,23 @@ public class AccountInfoController {
 
     @GetMapping
     public List<User> getAllUsers() {
-        return (List<User>) userRepository.findAll();
+        List<User> users = (List<User>) userRepository.findAll();
+        addLinks(users);
+        return users;
     }
 
     @GetMapping(params = "admin")
     public List<User> getAllAdmins() {
-        return userRepository.findAllByRole("admin");
+        List<User> admins = userRepository.findAllByRole("admin");
+        addLinks(admins);
+        return admins;
     }
 
     @GetMapping(params = "default")
     public List<User> getAllDefaultUsers() {
-        return userRepository.findAllByRole("user");
+        List<User> users = userRepository.findAllByRole("user");
+        addLinks(users);
+        return users;
     }
 
     @GetMapping(params = "username")
@@ -48,5 +56,9 @@ public class AccountInfoController {
     @GetMapping("/{name}")
     public ResponseEntity<User> getUserByName(@PathVariable String name) {
         return ResponseEntity.of(userRepository.findByName(name));
+    }
+
+    private void addLinks(Iterable<User> users) {
+        users.forEach(user -> user.add(linkTo(AccountInfoController.class).slash(user.getName()).withSelfRel()));
     }
 }

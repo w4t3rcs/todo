@@ -5,18 +5,18 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 import org.springframework.data.domain.Persistable;
+import org.springframework.hateoas.RepresentationModel;
 
 @ToString
 @Getter
 @Setter
-@SuperBuilder
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Table(name = "todos")
-public class Todo implements Persistable<Long> {
+public class Todo extends RepresentationModel<Todo> implements Persistable<Long> {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
 @CrossOrigin("http://localhost:8080")
 @RequestMapping(path = "/api/todo", produces = MediaType.APPLICATION_JSON_VALUE)
 @RestController
@@ -22,7 +24,9 @@ public class TodoInfoController {
 
     @GetMapping
     public List<Todo> getAllTodos() {
-        return (List<Todo>) todoRepository.findAll();
+        List<Todo> todos = (List<Todo>) todoRepository.findAll();
+        todos.forEach(todo -> todo.add(linkTo(TodoInfoController.class).slash(todo.getId()).withSelfRel()));
+        return todos;
     }
 
     @GetMapping(params = "name")
