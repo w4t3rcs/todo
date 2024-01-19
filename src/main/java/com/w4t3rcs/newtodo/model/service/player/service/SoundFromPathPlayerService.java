@@ -1,6 +1,6 @@
-package com.w4t3rcs.newtodo.model.service.player;
+package com.w4t3rcs.newtodo.model.service.player.service;
 
-import com.w4t3rcs.newtodo.model.common.executor.player.StringPlayer;
+import com.w4t3rcs.newtodo.model.common.executor.player.ServicePlayer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
@@ -12,7 +12,7 @@ import java.time.Duration;
 
 @Slf4j
 @Service
-public class SoundFromPathPlayerService implements StringPlayer {
+public class SoundFromPathPlayerService implements ServicePlayer<String> {
     @Override
     public void play(String path) {
         final Resource resource = createClassPathResource(path);
